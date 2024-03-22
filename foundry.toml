@@ -11,6 +11,13 @@ evm_version = "cancun"
 
 [rpc_endpoints]
 ethereum = "${ETH_RPC_URL}"
+holesky = "${HOLESKY_RPC_URL}"
+sepolia = "${SEPOLIA_RPC_URL}"
+
+[etherscan]
+ethereum = { key = "${ETH_API_KEY}", id = 1 }
+holesky = { key = "${ETH_API_KEY}", id = 17000 }
+sepolia = { key = "${ETH_API_KEY}", id = 11155111 }
 
 [fmt]
 bracket_spacing = true

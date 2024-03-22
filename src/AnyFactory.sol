@@ -43,7 +43,7 @@ contract AnyFactory {
             deployedContract := create(0x00, 0x00, 0x20)
 
             if gt(initCall.length, 0x00) {
-                calldatacopy(0x00, 0x00, initCall.length)
+                calldatacopy(0x00, initCall.offset, initCall.length)
 
                 if iszero(call(gas(), deployedContract, 0x00, 0x00, initCall.length, 0x00, 0x00)) {
                     returndatacopy(0x00, 0x00, returndatasize())

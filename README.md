@@ -1,66 +1,26 @@
-## Foundry
+# A factory to clone any contract on the network
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## test
 
-Foundry consists of:
-
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
+put `ETH_RPC_URL` to `.env` file
 ```shell
-$ forge build
+forge test -vvvv
 ```
 
-### Test
 
+## deploy and script
+
+put `<NETWORK>_RPC_URL`, `ETH_API_KEY` and `PRIVATE_KEY` to `.env` file
 ```shell
-$ forge test
+forge script script/AnyFactory.s.sol -vvvv --rpc-url <network> --broadcast --verify
 ```
 
-### Format
+holesky address: [0x2Bee2E47E8efAF683249fb2d607836b3be6aA5Bb](https://holesky.etherscan.io/address/0x2Bee2E47E8efAF683249fb2d607836b3be6aA5Bb#code)
 
+sepolia address: [0xD2Fb4063883b8c3CEb45C8D827Ba5D6C312f9a1E](https://sepolia.etherscan.io/address/0xD2Fb4063883b8c3CEb45C8D827Ba5D6C312f9a1E#code)
+
+
+### CloneContract script:
 ```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+forge script script/CloneContract.s.sol -vvvv --rpc-url <network> --sig "run(address,address)" <anyFactoryAddress> <contractAddress> --broadcast
 ```
